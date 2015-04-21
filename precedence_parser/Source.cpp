@@ -26,8 +26,15 @@ int main()
 		getline(cin, equation);
 		tokenize(equation);
 		it = tokens.begin();
-		result = parse(parse_primary(), 0);
-		cout << result << endl;
+		try
+		{
+			result = parse(parse_primary(), 0);
+			cout << result << endl;
+		}
+		catch (int e)
+		{
+			cout << "invalid input" << endl;
+		}
 		tokens.clear();
 		tokenscount = 0;
 	}
@@ -112,7 +119,7 @@ string read_token()
 {
 	if (it != tokens.end())
 		return (*it++);
-	return ";";
+
 }
 
 int conv_char_prec(char oper)
